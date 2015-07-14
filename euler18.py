@@ -20,23 +20,21 @@ triangle = """75
 63 66 04 68 89 53 67 30 73 16 69 87 40 31
 04 62 98 27 23 09 70 98 73 93 38 53 60 04 23""".split("\n")
 
-triangle = """3
-7 4
-2 4 6
-8 5 9 3""".split("\n")
+# triangle = """3
+# 7 4
+# 2 4 6
+# 8 5 9 3""".split("\n")
 
-tri = [x.split(" ") for x in triangle]
-print tri
+tri = [[int(i) for i in x.split(" ")] for x in triangle]
 
 for n in reversed(xrange(1, len(tri))):
     print "Row: %s" % n
 
     for (i, val) in enumerate(tri[n-1]):
-        max_from_lower = max(tri[n][i], tri[n][i+1])
+        tri[n-1][i] += max(tri[n][i], tri[n][i+1])
 
         print "Column: %s" % i
         print "Max lower row: %s" % max(tri[n][i], tri[n][i+1])
-        tri[n-1][i] = tri[n-1][i] + max_from_lower
         print "New value: %s" % val
-        break
+
     print tri
