@@ -23,31 +23,16 @@ def get_amicable_nums(num):
 
     divisor_sums = [divisor_sum(num) for num in xrange(1, num+1)]
 
-
-    # print list(enumerate(divisor_sums, 1))
-
     amicable_nums = []
-
-    # at index = 220, x = 284
     for (index, x) in enumerate(divisor_sums, 1):
-        print "d(%s) = %s" % (index, x)
 
         if x <= num and x != 1 and index != 1 and x != index:
-            if x == divisor_sums[x-1] and index == divisor_sums[index]:
+            if index == divisor_sums[x-1]:
                 amicable_nums.append(index)
 
     return amicable_nums
 
-
-# sum_amicable = sum(index for (index, num) in enumerate(divisor_sums, 1) if num in amicable_sums)
 print divisor_sum(284)
-
-
-print 50 in get_amicable_nums(285)
-# print
-print get_amicable_nums(285)
-# print sum(get_amicable_nums(10000))
-# print (10000 in get_amicable_nums(10000))
-# print max(get_amicable_nums(10000))
-# # print sum(amicable_nums)
+print get_amicable_nums(10000)
+print sum(get_amicable_nums(10000))
 
